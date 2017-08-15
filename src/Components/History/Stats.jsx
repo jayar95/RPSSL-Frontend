@@ -15,6 +15,10 @@ export default class Stats extends Component {
 			</div>
 		);
 
+		/**
+		 * This effectively performs a key, value loop over the props.stats object. A single label and stat object is
+		 * returned and then mapped into some JSX
+		 */
 		let stats =  Object.entries(this.props.stats).map(([label,statObj])=>{
 			let renderStats = Object.entries(statObj).map(statRow);
 

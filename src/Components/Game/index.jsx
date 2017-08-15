@@ -7,9 +7,10 @@ import './game.css';
 
 const apiBase = process.env.REACT_APP_API_URL + '/game/';
 
-let handOptions = ['rock', 'paper', 'scissors', 'spock', 'lizard'];
-
 const endpoint = playerId => apiBase + playerId + '/play';
+
+//This is later mapped into the Hand component
+let handOptions = ['rock', 'paper', 'scissors', 'spock', 'lizard'];
 
 export default class Play extends Component {
 	constructor() {
@@ -38,6 +39,7 @@ export default class Play extends Component {
 		if (this.state.roundResult)
 			results = <Results result={this.state.roundResult} />;
 
+		//react router returns a string instead of an int...
 		let playerId = parseInt(this.props.match.params.player);
 
 		return (

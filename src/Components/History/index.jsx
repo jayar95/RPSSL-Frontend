@@ -23,11 +23,13 @@ export default class History extends Component {
 	}
 
 	render() {
+		//If no games are passed through, that means they haven't played any games yet
 		let table = <h3>Play a game to see your history</h3>;
 
 		if (this.state.history && this.state.history.games.length > 0)
 			table = <Table history={this.state.history} />;
 
+		//react router returns a string instead of an int...
 		let playerId = parseInt(this.props.match.params.player);
 
 		return (
