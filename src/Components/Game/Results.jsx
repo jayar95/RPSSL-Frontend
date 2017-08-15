@@ -4,13 +4,15 @@ import PropTypes from 'prop-types';
 
 export default class Results extends Component {
 	render() {
+		let computerHand = this.props.result.computer.toLowerCase();
+
 		return (
 			<div className="results row">
 				<div className="col-md-6">
 					<h3>Computer plays:</h3>
 
 					<div className="computer-hand">
-						<Hand name={this.props.result.computer} />
+						<Hand name={computerHand} />
 					</div>
 				</div>
 
