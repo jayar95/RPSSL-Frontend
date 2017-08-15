@@ -1,9 +1,19 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
 import Game from './Components/Game';
 
-export default () => (
-	<Router>
+const Router = () => (
+	<BrowserRouter>
 		<Route path="/" component={Game} />
-	</Router>
+	</BrowserRouter>
+);
+
+export default () => (
+	<div className="container">
+		<div className="header">
+			<div className="title">Rock Paper Scissors Splock Lizard</div>
+		</div>
+
+		<Router />
+	</div>
 );
