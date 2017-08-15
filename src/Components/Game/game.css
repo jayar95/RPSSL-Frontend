@@ -1,0 +1,17 @@
+.game-room .game h3 {
+  text-align: left; }
+
+.game-room .hands img {
+  cursor: pointer;
+  height: 128px;
+  margin: 0 10px;
+  -webkit-user-drag: none;
+  -moz-user-drag: none; }
+  .game-room .hands img.toggled {
+    background: #f11d2c; }
+
+.game-room .outcome {
+  margin-top: 25px;
+  font-size: 5em;
+  font-weight: 700;
+  text-align: center; }

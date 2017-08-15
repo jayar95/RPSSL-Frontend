@@ -1,60 +1,58 @@
 import React, {Component} from 'react';
-import './index.css';
+import Nav from '../Common/Nav';
 import http from 'axios';
-import {Redirect} from 'react-router-dom';
+import Hand from './Hand';
+import Results from './Results';
+import './game.css';
 
-const endpoint = process.env.REACT_APP_API_URL + '/game';
+const apiBase = process.env.REACT_APP_API_URL + '/game/';
 
-export default class Index extends Component {
+let handOptions = ['rock', 'paper', 'scissors', 'spock', 'lizard'];
+
+const endpoint = playerId => apiBase + playerId + '/play';
+
+export default class Play extends Component {
 	constructor() {
 		super();
 
 		this.state = {
-			player: '',
-			redirect: null,
-		}
+			roundResult: null,
+		};
 	}
 
-	handleInputChange = event => {
-		this.setState({
-			player: event.target.value,
-		});
-	};
-
-	/**
-	 * Make an http request to the API to create a new game. The return data includes the
-	 * player ID. That ID is used to redirect the client to the game
-	 */
-	play = () => {
-		http.post(endpoint, {
-				player: this.state.player,
+	playGame = hand => {
+		http.post(endpoint(this.props.match.params.player), {
+				hand: hand,
 			}).then(res => this.setState({
-				redirect: '/play/' + res.data.player
+				roundResult: res.data,
 			})
 		);
 	};
 
-	//This is called when the user hits the "enter" key from the text input.
-	hitEnter = event => {
-		if (event.key === 'Enter') {
-			this.play();
-		}
-	};
-
 	render() {
-		if (this.state.redirect) {
-			return <Redirect push to={this.state.redirect}/>;
-		}
+		let hands = handOptions.map((hand, index) => {
+			return <Hand key={index} name={hand} action={this.playGame} />;
+		});
+
+		let results;
+		if (this.state.roundResult)
+			results = <Results result={this.state.roundResult} />;
+
+		let playerId = parseInt(this.props.match.params.player);
 
 		return (
-			<div className="index">
-				<h3>Enter a name to begin a game</h3>
+			<div className="game-room">
+				<Nav playerId={playerId} />
 
-				<input name="player" value={this.state.player} onKeyPress={this.hitEnter}
-				       onChange={this.handleInputChange} type="text"
-				       placeholder="Your name..." />
+				<div className="game">
+					<h3>Pick a hand:</h3>
 
-				<button onClick={this.play}>Play</button>
+					<div className="hands">
+						{hands}
+					</div>
+				</div>
+
+				{results}
 			</div>
 		);
 	}

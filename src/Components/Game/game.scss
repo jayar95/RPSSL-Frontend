@@ -1,0 +1,26 @@
+.game-room {
+  .game h3 {
+	text-align: left;
+  }
+
+  .hands {
+	img {
+	  cursor: pointer;
+	  height: 128px;
+	  margin: 0 10px;
+	  -webkit-user-drag: none;
+	  -moz-user-drag: none;
+
+	  &.toggled {
+		background: #f11d2c;
+	  }
+	}
+  }
+
+  .outcome {
+	margin-top: 25px;
+	font-size: 5em;
+	font-weight: 700;
+	text-align: center;
+  }
+}

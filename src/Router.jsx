@@ -1,11 +1,16 @@
 import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
-import Index from './Components/Game';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import Home from './Components/Home';
+import Play from './Components/Game/index';
+import History from './Components/History/index';
 
 const Router = () => (
 	<BrowserRouter>
-		<Route path="/" component={Index} />
-		<Route path="/play/:player" component={Index} />
+		<Switch>
+			<Route exact path="/" component={Home} />
+			<Route path="/play/:player" component={Play} />
+			<Route path="/history/:player" component={History} />
+		</Switch>
 	</BrowserRouter>
 );
 

@@ -1,0 +1,23 @@
+.stat-table {
+  font-size: 1.2em;
+
+  .stat-block {
+	display: inline-block;
+  }
+
+  .stat-heading {
+	font-weight: 700;
+	display: block;
+	padding: 10px;
+	border-bottom: 2px solid #ddd;
+  }
+
+  .stat-value {
+	text-align: center;
+	padding-top: 5px;
+  }
+}
+
+.table-heading {
+  margin-top: 50px;
+}
