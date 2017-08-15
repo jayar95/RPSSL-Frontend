@@ -1,0 +1,11 @@
+.index {
+  text-align: center; }
+  .index h3 {
+    margin-bottom: 25px; }
+  .index input[type="text"] {
+    padding: 5px;
+    font-size: 2rem;
+    margin-right: 15px; }
+  .index button {
+    padding: 7px 20px;
+    font-size: 2rem; }

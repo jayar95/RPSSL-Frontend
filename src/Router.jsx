@@ -1,10 +1,11 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
-import Game from './Components/Game';
+import Index from './Components/Game';
 
 const Router = () => (
 	<BrowserRouter>
-		<Route path="/" component={Game} />
+		<Route path="/" component={Index} />
+		<Route path="/play/:player" component={Index} />
 	</BrowserRouter>
 );
 
